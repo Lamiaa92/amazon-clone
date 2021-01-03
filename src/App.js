@@ -5,8 +5,7 @@ import Header from './Header';
 function App() {
   return (
     // BEM 
-    <div className="app">
-      <h1>Hello Clever programmmers </h1>
+    <div className="app"> 
       <Header />
       {/* Home */}
     </div>
