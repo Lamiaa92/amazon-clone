@@ -9,7 +9,7 @@ function Home() {
                 <img className="home__image" src="https://images-eu.ssl-images-amazon.com/images/G/02/digital/video/merch2016/Hero/Covid19/Generic/GWBleedingHero_ENG_COVIDUPDATE__XSite_1500x600_PV_en-GB._CB428684220_.jpg" />
         
                 <div className="home__row">
-                    <Product title='The lean startup' price={29.99} image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLDGCIreAxtmYES-b0drzc9kxKX5KwHC37Y7tNeuJIxQXCl6TOkQMiDPzxgwnq2IpBrpKtQ8ED&usqp=CAc'
+                    <Product title='The lean startup : How Constant Innovation Creates Radically Successful Businesses Paperback' price={29.99} image='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLDGCIreAxtmYES-b0drzc9kxKX5KwHC37Y7tNeuJIxQXCl6TOkQMiDPzxgwnq2IpBrpKtQ8ED&usqp=CAc'
                              rating={5}/>
                     <Product 
                             id="49538094"
@@ -19,6 +19,7 @@ function Home() {
                             image="https://www.kenwoodworld.com/WebImage/Global/Product%20images/Kmix%20products/limited_edition/Kmix%20Editions/KMX761CH_kMix-Editions_Chrome_800x600.jpg"
                     />
                 </div>
+                
 
                 <div className="home__row">
                     <Product 
