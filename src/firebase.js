@@ -11,9 +11,9 @@ const firebaseConfig = {
     measurementId: "G-HEVQ3T235Y"
   };
 
-  const firebaseApp = firebase.initializeApp(firebaseConfig);
+  const firebaseApp = firebase.initializeApp(firebaseConfig); //this will set up everything
 
-  const db = firebaseApp.firestore();
-  const auth = firebase.auth();
+  const db = firebaseApp.firestore(); //initialize the database
+  const auth = firebase.auth(); // handle all the signing in etc
 
   export { db, auth };
