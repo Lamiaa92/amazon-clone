@@ -8,11 +8,14 @@ import Checkout from "./Checkout";
 import Login from "./Login";
 import { auth } from "./firebase";
 import { useStateValue } from "./StateProvider";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
-
+const promise = loadStripe();
 
 function App() {
-  const [{}, dispatch] = useStateValue();
+  const [{}, dispatch] = useStateValue
+  ("pk_test_51IFNJ6H2SnrPszu3E8gdC3d0pm7pIZhoU2EGFoRn1uVtzF6JAASYiN9Dbqxl9wf7DiVNMEiVUM0WaydX68zqbQXj00ayRrsXfX");
 
   // Listener, will only run once when the app component loads..
   useEffect(() => {
