@@ -43,7 +43,21 @@ function Payment() {
         event.preventDefault();
         setProcessing(true);
 
-        const payload = await stripe
+        const payload = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: elements.getElement(CardElement)
+            }
+        }).then(({ paymentIntent }) => {
+
+            //paymentIntent = Payment confirmation
+
+            setSucceeded(true);
+            setError(null);
+            setProcessing(false)
+
+            history.replace('/orders')
+
+        }) 
         
     }
 
