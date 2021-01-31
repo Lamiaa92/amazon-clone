@@ -23,8 +23,15 @@ function Payment() {
     useEffect(() => {
          // generate the special stripe secret which allows us to charge a custommer 
          
-         const getClientSecret = async() => {
-                const response = await axious; //way to make a request 
+         const getClientSecret = async () => {
+                const response = await axios({   //way to make a request 
+
+                    method: 'post',
+                    // Stripe expects the total in a currencies subnits
+                    url: '/payments/create?total=${getBasketTotal(basket) * 100}'
+
+                }); 
+                setClientSecret(response.data.clientSecret)
          }
          
          getClientSecret();
