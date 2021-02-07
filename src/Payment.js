@@ -7,6 +7,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CurrencyFormat from 'react-currency-format';
 import { getBasketTotal } from "./reducer";
 import axios from './axios';
+import { db } from "./firebase";
 
 function Payment() {
     const [{ basket, user }, dispatch] = useStateValue();
@@ -26,20 +27,21 @@ function Payment() {
          // generate the special stripe secret which allows us to charge a custommer 
          
          const getClientSecret = async () => {
-                const response = await axios({   //way to make a request 
+                const response = await axios({  
 
                     method: 'post',
                     // Stripe expects the total in a currencies subnits
-                    url: '/payments/create?total=${getBasketTotal(basket) * 100}'
+                    url: '/payments/create?total=' + getBasketTotal(basket) * 100
 
                 }); 
                 setClientSecret(response.data.clientSecret)
          }
          
          getClientSecret();
-
     }, [basket]) // we need the get a new secret whenever the basket changes 
     
+    console.log('THE SECRET IS >>>>', clientSecret)
+
     const handleSubmit = async (event) => {
         //do all the fancy stripe stuff...
         event.preventDefault();
@@ -53,9 +55,23 @@ function Payment() {
 
             //paymentIntent = Payment confirmation
 
+            db.collection('users')
+            .doc(user?.uid)
+            .collection('orders')
+            .doc(paymentIntent.id)
+            .set({
+                basket: basket,
+                amount: paymentIntent.amount,
+                created: paymentIntent.created
+            })
+
             setSucceeded(true);
             setError(null);
             setProcessing(false)
+
+            dispatch({
+                type: 'EMPTY_BASKET'
+            })
 
             history.replace('/orders')
 

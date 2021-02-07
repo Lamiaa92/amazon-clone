@@ -1,7 +1,7 @@
 const functions = require("firebase-functions");
 const express = require("express");
 const cors = require("cors");
-const stripe = require("stripe")("sk_test_51IFNJ6H2SnrPszu3csmHVNfGpyiIrZO0wRsz7b619x9LFUzvwsqlSvlzcaF2TI3RQfHx8MN3HHq7lSbAekTcRMuZ00RZFLiSLw")
+const stripe = require("stripe")("sk_test_51IFNJ6H2SnrPszu3csmHVNfGpyiIrZO0wRsz7b619x9LFUzvwsqlSvlzcaF2TI3RQfHx8MN3HHq7lSbAekTcRMuZ00RZFLiSLw");
 
 // API 
 
@@ -11,7 +11,7 @@ const app = express();
 
 // Middlewares
 app.use(cors ({ origin: true}));
-app.use(express.json());
+app.use(express.json());  //will allow us to pass data and send data in the Json format
 
 // API routes
 // APIs have different types of request, get requests and post requests
